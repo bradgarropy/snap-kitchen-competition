@@ -1,0 +1,33 @@
+{
+    "name": "snap-kitchen-competition",
+    "version": "0.0.1",
+    "description": "🏋🏼 snap kitchen interview question - powerlifting competition",
+    "keywords": [
+        "javascript",
+        "snap-kitchen",
+        "interview",
+        "node",
+        "eslint",
+        "prettier"
+    ],
+    "homepage": "https://github.com/bradgarropy/snap-kitchen-competition",
+    "bugs": {
+        "url": "https://github.com/bradgarropy/snap-kitchen-competition/issues"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "Brad Garropy",
+        "email": "bradgarropy@gmail.com",
+        "url": "https://bradgarropy.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/bradgarropy/snap-kitchen-competition"
+    },
+    "scripts": {
+        "start": "node index.js"
+    },
+    "dependencies": {},
+    "devDependencies": {},
+    "peerDependencies": {}
+}
