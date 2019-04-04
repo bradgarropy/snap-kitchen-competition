@@ -1,45 +1,59 @@
-const generate_team = lifters => {
-    return [...Array(lifters).keys()]
+const axios = require("axios")
+
+const generateNames = async number => {
+    const response = await axios.get(
+        `https://uinames.com/api/?amount=${number}&region=united%20states`,
+    )
+
+    const names = response.data.map(name => name.name)
+    return names
 }
 
-function getRandomInt(min, max) {
+const generateLifters = async number => {
+    const names = await generateNames(number)
+
+    let lifters = []
+
+    for (let index = 0; index < number; index++) {
+        const lifter = {
+            name: names[index],
+            squat: 0,
+            bench: 0,
+            dead: 0,
+            total: 0,
+        }
+
+        lifters.push(lifter)
+    }
+
+    return lifters
+}
+
+const randomInteger = (min, max) => {
     min = Math.ceil(min)
     max = Math.floor(max)
-    return Math.floor(Math.random() * (max - min)) + min //The maximum is exclusive and the minimum is inclusive
+    const integer = Math.floor(Math.random() * (max - min + 1)) + min
+    return integer
 }
 
-const t1 = generate_team(1000)
-const t2 = generate_team(1000)
+const main = async() => {
+    // generate lifters
+    const lifters = await generateLifters(15)
 
-console.log(t1)
-console.log(t2)
+    // simulate lifts
+    lifters.forEach(lifter => {
+        lifter.squat = randomInteger(0, 1000)
+        lifter.bench = randomInteger(0, 1000)
+        lifter.dead = randomInteger(0, 1000)
 
-let t1Wins = 0
-let t2Wins = 0
+        const {squat, bench, dead} = lifter
+        lifter.total = squat + bench + dead
+    })
 
-// while remaining members in T1 and T2
-t1.forEach((member, index) => {
-    const t1Lifter = {name: t1[index], weight: 0}
-    const t2Lifter = {name: t2[index], weight: 0}
+    // determine winners
+    console.log(lifters)
 
-    t1Lifter.weight = getRandomInt(5, 1000)
-    t2Lifter.weight = getRandomInt(5, 1000)
-
-    console.log(t1Lifter, t2Lifter)
-
-    if (t1Lifter.weight > t2Lifter.weight) {
-        console.log(`${t1Lifter.name} (T1) wins!`)
-        t1Wins = t1Wins + 1
-    } else {
-        console.log(`${t2Lifter.name} (T2) wins!`)
-        t2Wins = t2Wins + 1
-    }
-})
-
-if (t1Wins > t2Wins) {
-    console.log("T1 WINS!")
-} else if (t2Wins > t1Wins) {
-    console.log("T2 WINS!")
-} else {
-    console.log("TIE!")
+    return
 }
+
+main()

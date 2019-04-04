@@ -27,7 +27,9 @@
     "scripts": {
         "start": "node index.js"
     },
-    "dependencies": {},
+    "dependencies": {
+        "axios": "^0.18.0"
+    },
     "devDependencies": {
         "babel-eslint": "^10.0.1",
         "eslint": "^5.15.3",
