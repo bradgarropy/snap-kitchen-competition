@@ -51,7 +51,20 @@ const main = async() => {
     })
 
     // determine winners
+
+    // squat
+    const winnerSquat = lifters.reduce((acc, curr) => {
+        if (curr.squat > acc.squat) {
+            return curr
+        }
+
+        return acc
+    })
     console.log(lifters)
+    console.log(winnerSquat)
+
+    // bench
+    // dead
 
     return
 }
