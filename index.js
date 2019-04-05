@@ -29,6 +29,29 @@ const generateLifters = async number => {
     return lifters
 }
 
+const determineWinner = (lifters, category) => {
+    const winner = lifters.reduce((winner, lifter) => {
+        if (lifter[category] > winner[category]) {
+            return lifter
+        }
+
+        return winner
+    })
+
+    return winner
+}
+
+const determineWinners = lifters => {
+    const winners = {
+        squat: determineWinner(lifters, "squat"),
+        bench: determineWinner(lifters, "bench"),
+        dead: determineWinner(lifters, "dead"),
+        total: determineWinner(lifters, "total"),
+    }
+
+    return winners
+}
+
 const randomInteger = (min, max) => {
     min = Math.ceil(min)
     max = Math.floor(max)
@@ -38,7 +61,7 @@ const randomInteger = (min, max) => {
 
 const main = async() => {
     // generate lifters
-    const lifters = await generateLifters(15)
+    const lifters = await generateLifters(5)
 
     // simulate lifts
     lifters.forEach(lifter => {
@@ -51,20 +74,8 @@ const main = async() => {
     })
 
     // determine winners
-
-    // squat
-    const winnerSquat = lifters.reduce((acc, curr) => {
-        if (curr.squat > acc.squat) {
-            return curr
-        }
-
-        return acc
-    })
-    console.log(lifters)
-    console.log(winnerSquat)
-
-    // bench
-    // dead
+    const winners = determineWinners(lifters)
+    console.log(winners)
 
     return
 }
