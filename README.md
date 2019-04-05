@@ -1,0 +1,1 @@
+# 🏋🏼 Snap Kitchen Powerlifting Competition

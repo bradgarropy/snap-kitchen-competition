@@ -1,4 +1,6 @@
 const axios = require("axios")
+const cli = require("./cli")
+const utils = require("./utils")
 
 const generateNames = async number => {
     const response = await axios.get(
@@ -9,7 +11,7 @@ const generateNames = async number => {
     return names
 }
 
-const generateLifters = async number => {
+const generateLifters = async(number = 5) => {
     const names = await generateNames(number)
 
     let lifters = []
@@ -25,6 +27,19 @@ const generateLifters = async number => {
 
         lifters.push(lifter)
     }
+
+    return lifters
+}
+
+const simulateLifts = lifters => {
+    lifters.forEach(lifter => {
+        lifter.squat = utils.randomInteger(0, 1000)
+        lifter.bench = utils.randomInteger(0, 1000)
+        lifter.dead = utils.randomInteger(0, 1000)
+
+        const {squat, bench, dead} = lifter
+        lifter.total = squat + bench + dead
+    })
 
     return lifters
 }
@@ -52,30 +67,28 @@ const determineWinners = lifters => {
     return winners
 }
 
-const randomInteger = (min, max) => {
-    min = Math.ceil(min)
-    max = Math.floor(max)
-    const integer = Math.floor(Math.random() * (max - min + 1)) + min
-    return integer
-}
-
 const main = async() => {
+    // parse arguments
+    const args = cli.parse()
+
     // generate lifters
-    const lifters = await generateLifters(5)
+    const lifters = await generateLifters(args.number)
 
     // simulate lifts
-    lifters.forEach(lifter => {
-        lifter.squat = randomInteger(0, 1000)
-        lifter.bench = randomInteger(0, 1000)
-        lifter.dead = randomInteger(0, 1000)
-
-        const {squat, bench, dead} = lifter
-        lifter.total = squat + bench + dead
-    })
+    simulateLifts(lifters)
 
     // determine winners
     const winners = determineWinners(lifters)
-    console.log(winners)
+
+    // log lifters
+    console.log()
+    console.log("Lifters")
+    console.table(lifters)
+    console.log()
+
+    // log winners
+    console.log("Winners")
+    console.table(winners)
 
     return
 }
