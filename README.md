@@ -12,7 +12,16 @@ Your program should:
 
 Bonus points if your program can:
 * Accept the number of lifters as a CLI argument.
-* Generate a random name for each lifter.
+* Generate a random profile for each lifter.
+    * Name
+    * Photo
+    * Gender
+    * Weight
+* Select winners based on different classes.
+    * Individual Lifts (Squat, Bench, Deadlift)
+    * Gender
+    * Overall Total
+    * Weight Class
 
 [1]: https://www.snapkitchen.com
 [2]: https://code.visualstudio.com
