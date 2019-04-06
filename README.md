@@ -9,6 +9,11 @@ Write a program to simulate a powerlifting meet, where each lifter completes a s
 Your program should:
 * Generate a list of lifters.
 * Randomize results for each lifter.
+* Determine winners for each lift.
+    * Squat
+    * Bench
+    * Deadlift
+* Determine winner for overall total.
 
 Bonus points if your program can:
 * Accept the number of lifters as a CLI argument.
@@ -18,10 +23,22 @@ Bonus points if your program can:
     * Gender
     * Weight
 * Select winners based on different classes.
-    * Individual Lifts (Squat, Bench, Deadlift)
     * Gender
-    * Overall Total
     * Weight Class
+
+## 💯 Solution
+
+*TODO*
+
+## 💀 Execution
+
+If you want to see my solution, clone the repository and execute it locally!
+
+```
+git clone https://github.com/bradgarropy/snap-kitchen-competition.git
+cd snap-kitchen-competition
+node index.js -n 10
+```
 
 [1]: https://www.snapkitchen.com
 [2]: https://code.visualstudio.com
