@@ -21,10 +21,7 @@ Bonus points if your program can:
     * Name
     * Photo
     * Gender
-    * Weight
-* Select winners based on different classes.
-    * Gender
-    * Weight Class
+* Select winners based on gender.
 
 ## 💯 Solution
 
