@@ -23,10 +23,6 @@ Bonus points if your program can:
     * Gender
 * Select winners based on gender.
 
-## 💯 Solution
-
-*TODO*
-
 ## 💀 Execution
 
 If you want to see my solution, clone the repository and execute it locally!
